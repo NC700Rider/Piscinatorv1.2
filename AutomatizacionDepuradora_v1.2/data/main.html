@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Piscinator v1.2</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <style>
+		body {
+			background-image: url('backGround.gif');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+		</style>
+   </head>
+ 
+   <body>
+	<link rel="stylesheet" href="css/toggle.css">
+	<link rel="stylesheet" href="css/onOff.css">
+		<div class="wrapper">
+			<h1 style="color:white;" style="font-size:100%;">Piscinator</h1>
+			<table border="0" style="color:white;">
+				<tr>
+					<td>Hoy es</td>
+					<td><div id="dia"></div> </td>
+					<td>-</td>
+					<td><div id="mes"></div> </td>
+					<td>-</td>
+					<td><div id="ano"></div> </td>
+					<td> son las </td>
+					<td><div id="hora"></div> </td>
+					<td>:</td>
+					<td><div id="minuto"></div></td>
+					<td>:</td>
+					<td><div id="segundo"></div></td>
+				</tr>
+			</table>
+			<table border="0" style="width:100%">
+				<tr>
+					<td align="center" style="color:white;">Bomba</td>
+					<td align="center" style="color:white;">Depuradora</td>
+					<td align="center" style="color:white;">Luz</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<div class="switchButtonBomba">
+							<input type="checkbox" name="switchButtonBomba" id="switchButtonBomba-label" class="switchButtonBomba__checkbox"
+							onchange="enviarDatos(this.name, this.checked)" >
+							<label for="switchButtonBomba-label" class="switchButtonBomba__label"></label>
+						</div>
+					</td>
+					<td align="center">
+						<div class="switchButtonDepuradora">
+							<input type="checkbox" name="switchButtonDepuradora" id="switchButtonDepuradora-label" class="switchButtonDepuradora__checkbox"
+							onchange="enviarDatos(this.name, this.checked)">
+								<label for="switchButtonDepuradora-label" class="switchButtonDepuradora__label"></label>
+						</div>
+					</td>
+					<td align="center">
+						<div class="switchButtonLuz">
+							<input type="checkbox" name="switchButtonLuz" id="switchButtonLuz-label" class="switchButtonLuz__checkbox" 
+							onchange="enviarDatos(this.name, this.checked)">
+							<label for="switchButtonLuz-label" class="switchButtonLuz__label Unactive-style"></label>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table border="0">
+				<tr">
+				<td><input type="checkbox" id="checkboxProg1" name="0" onchange="cambioEstadoPrograma(this.name, this.checked)"></td>
+				<td>Prog#1</td><td><div id="p1l"></div></td><td><div id="p1m"></div></td><td><div id="p1x"></div></td>
+				<td><div id="p1j"></div></td><td><div id="p1v"></div></td><td><div id="p1s"></div></td><td><div id="p1d"></div></td>
+				<td><div id="p1horaArranque"></div></td><td><div id="p1horaParada"></div></td>
+				<td>
+					<label id="input-label-p1" class="label-big Off-style">OFF</label>
+				</td>
+				</tr>
+				<tr>
+				<td><input type="checkbox" id="checkboxProg2" name="1" onchange="cambioEstadoPrograma(this.name, this.checked)"></td>
+				<td>Prog#2</td><td><div id="p2l"></div></td><td><div id="p2m"></div></td><td><div id="p2x"></div></td>
+				<td><div id="p2j"></div></td><td><div id="p2v"></div></td><td><div id="p2s"></div></td><td><div id="p2d"></div></td>
+				<td><div id="p2horaArranque"></div></td><td><div id="p2horaParada"></div></td>
+				<td>
+					<label id="input-label-p2" class="label-big Off-style">OFF</label>
+				</td></tr>
+				<tr>
+				<td><input type="checkbox" id="checkboxProg3" name="2" onchange="cambioEstadoPrograma(this.name, this.checked)"></td>
+				<td>Prog#3</td><td><div id="p3l"></div></td><td><div id="p3m"></div></td><td><div id="p3x"></div></td>
+				<td><div id="p3j"></div></td><td><div id="p3v"></div></td><td><div id="p3s"></div></td><td><div id="p3d"></div></td>
+				<td><div id="p3horaArranque"></div></td><td><div id="p3horaParada"></div></td>
+				<td>
+					<label id="input-label-p3" class="label-big Off-style">OFF</label>
+				</td></tr>
+				<tr>
+				<td><input type="checkbox" id="checkboxProg4" name="3" onchange="cambioEstadoPrograma(this.name, this.checked)"></td>
+				<td>Prog#4</td><td><div id="p4l"></div></td><td><div id="p4m"></div></td><td><div id="p4x"></div></td>
+				<td><div id="p4j"></div></td><td><div id="p4v"></div></td><td><div id="p4s"></div></td><td><div id="p4d"></div></td>
+				<td><div id="p4horaArranque"></div></td><td><div id="p4horaParada"></div></td>
+				<td>
+					<label id="input-label-p4" class="label-big Off-style">OFF</label>
+				</td></tr>
+			</table>
+			<form action="/nuevaProgramacion" method="post">
+				<p align="center"> Programa
+					<select name="programa" >
+					<option value="0">-</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					</select>
+				</p>
+				<table border="0">
+					<tr>
+						<td align="center">L</td>
+						<td align="center">M</td>
+						<td align="center">X</td>
+						<td align="center">J</td>
+						<td align="center">V</td>
+						<td align="center">S</td>
+						<td align="center">D</td>
+					</tr>
+					<tr>
+						<td>
+							<select name="L" >
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</td>
+						<td>
+							<select name="M" >
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</td>
+						<td>
+							<select name="X" >
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</td>
+						<td>
+							<select name="J" >
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</td>
+						<td>
+							<select name="V" >
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</td>
+						<td>
+							<select name="S" >
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</td>
+						<td>
+							<select name="D" >
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<table border="0">
+					<tr>
+						<td>
+							Hora de Arranque
+						</td>
+						<td>
+							<select name="horaArranque" >
+								<option value="00">00</option>
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+								<option value="04">04</option>
+								<option value="05">05</option>
+								<option value="06">06</option>
+								<option value="07">07</option>
+								<option value="08">08</option>
+								<option value="09">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+							</select>
+						</td>
+						<td>:</td>
+						<td>
+							<select name="minutoArranque" >
+								<option value="0">00</option>
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+								<option value="04">04</option>
+								<option value="05">05</option>
+								<option value="06">06</option>
+								<option value="07">07</option>
+								<option value="08">08</option>
+								<option value="09">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+								<option value="24">24</option>
+								<option value="25">25</option>
+								<option value="26">26</option>
+								<option value="27">27</option>
+								<option value="28">28</option>
+								<option value="29">29</option>
+								<option value="30">30</option>
+								<option value="31">31</option>
+								<option value="32">32</option>
+								<option value="33">33</option>
+								<option value="34">34</option>
+								<option value="35">35</option>
+								<option value="36">36</option>
+								<option value="37">37</option>
+								<option value="38">38</option>
+								<option value="39">39</option>
+								<option value="40">40</option>
+								<option value="41">41</option>
+								<option value="42">42</option>
+								<option value="43">43</option>
+								<option value="44">44</option>
+								<option value="45">45</option>
+								<option value="46">46</option>
+								<option value="47">47</option>
+								<option value="48">48</option>
+								<option value="49">49</option>
+								<option value="50">50</option>
+								<option value="51">51</option>
+								<option value="52">52</option>
+								<option value="53">53</option>
+								<option value="54">54</option>
+								<option value="55">55</option>
+								<option value="56">56</option>
+								<option value="57">57</option>
+								<option value="58">58</option>
+								<option value="59">59</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Hora de Parada
+						</td>
+						<td>
+							<select name="horaParada" >
+								<option value="0">00</option>
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+								<option value="04">04</option>
+								<option value="05">05</option>
+								<option value="06">06</option>
+								<option value="07">07</option>
+								<option value="08">08</option>
+								<option value="09">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+							</select>
+						</td>
+						<td>:</td>
+						<td>
+							<select name="minutoParada" >
+								<option value="0">00</option>
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+								<option value="04">04</option>
+								<option value="05">05</option>
+								<option value="06">06</option>
+								<option value="07">07</option>
+								<option value="08">08</option>
+								<option value="09">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+								<option value="21">21</option>
+								<option value="22">22</option>
+								<option value="23">23</option>
+								<option value="24">24</option>
+								<option value="25">25</option>
+								<option value="26">26</option>
+								<option value="27">27</option>
+								<option value="28">28</option>
+								<option value="29">29</option>
+								<option value="30">30</option>
+								<option value="31">31</option>
+								<option value="32">32</option>
+								<option value="33">33</option>
+								<option value="34">34</option>
+								<option value="35">35</option>
+								<option value="36">36</option>
+								<option value="37">37</option>
+								<option value="38">38</option>
+								<option value="39">39</option>
+								<option value="40">40</option>
+								<option value="41">41</option>
+								<option value="42">42</option>
+								<option value="43">43</option>
+								<option value="44">44</option>
+								<option value="45">45</option>
+								<option value="46">46</option>
+								<option value="47">47</option>
+								<option value="48">48</option>
+								<option value="49">49</option>
+								<option value="50">50</option>
+								<option value="51">51</option>
+								<option value="52">52</option>
+								<option value="53">53</option>
+								<option value="54">54</option>
+								<option value="55">55</option>
+								<option value="56">56</option>
+								<option value="57">57</option>
+								<option value="58">58</option>
+								<option value="59">59</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<p align="center">
+					<input type="submit" value="Guardar">
+				</p>
+			</form>
+		</div>
+		<p>Version v1.2 23/07/2020</p>
+    </body>
+    <script type="text/javascript" src="./js/javaScript.js"></script>
+	
+</html>

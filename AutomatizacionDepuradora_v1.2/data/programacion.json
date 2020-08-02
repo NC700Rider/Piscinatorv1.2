@@ -1,0 +1,65 @@
+{
+  "numProg": 4,
+  "programas": [
+    { "estadoPrograma": true,
+      "diasSemana": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "horaArranque": 10,
+      "minutoArranque": 00,
+      "horaParada": 12,
+      "minutoParada": 00
+    },
+    { "estadoPrograma": false,
+      "diasSemana": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "horaArranque": 0,
+      "minutoArranque": 0,
+      "horaParada": 0,
+      "minutoParada": 0
+    },
+    { "estadoPrograma": false,
+      "diasSemana": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "horaArranque": 0,
+      "minutoArranque": 0,
+      "horaParada": 0,
+      "minutoParada": 0
+    },
+    { "estadoPrograma": false,
+      "diasSemana": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "horaArranque": 0,
+      "minutoArranque": 0,
+      "horaParada": 0,
+      "minutoParada": 0
+    }
+  ]
+}

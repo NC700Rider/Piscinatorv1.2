@@ -1,0 +1,113 @@
+            :root {
+                --color-green: #00a878;
+                --color-red: #95969A;
+                --color-button: #fdffff;
+                --color-black: #000;
+            }
+            .switchButtonBomba {
+                display: inline-block;
+            }
+            .switchButtonBomba .switchButtonBomba__checkbox {
+                display: none;
+            }
+            .switchButtonBomba .switchButtonBomba__label {
+                background-color: var(--color-red);
+                width: 2.5rem;
+                height: 1.5rem;
+                border-radius: 1rem;
+                display: inline-block;
+                position: relative;
+            }
+            .switchButtonBomba .switchButtonBomba__label:before {
+                transition: .2s;
+                display: block;
+                position: absolute;
+                width: 1.5rem;
+                height: 1.5rem;
+                background-color: var(--color-button);
+                content: '';
+                border-radius: 50%;
+                box-shadow: inset 0px 0px 0px 1px var(--color-black);
+            }
+            .switchButtonBomba .switchButtonBomba__checkbox:checked + .switchButtonBomba__label {
+                background-color: var(--color-green);
+            }
+            .switchButtonBomba .switchButtonBomba__checkbox:checked + .switchButtonBomba__label:before {
+                transform: translateX(1rem);
+            }
+            .switchButtonDepuradora {
+                display: inline-block;
+            }
+            .switchButtonDepuradora .switchButtonDepuradora__checkbox {
+                display: none;
+            }
+            .switchButtonDepuradora .switchButtonDepuradora__label {
+                background-color: var(--color-red);
+                width: 2.5rem;
+                height: 1.5rem;
+                border-radius: 1rem;
+                display: inline-block;
+                position: relative;
+            }
+            .switchButtonDepuradora .switchButtonDepuradora__label:before {
+                transition: .2s;
+                display: block;
+                position: absolute;
+                width: 1.5rem;
+                height: 1.5rem;
+                background-color: var(--color-button);
+                content: '';
+                border-radius: 50%;
+                box-shadow: inset 0px 0px 0px 1px var(--color-black);
+            }
+            .switchButtonDepuradora .switchButtonDepuradora__checkbox:checked + .switchButtonDepuradora__label {
+                background-color: var(--color-green);
+            }
+            .switchButtonDepuradora .switchButtonDepuradora__checkbox:checked + .switchButtonDepuradora__label:before {
+                transform: translateX(1rem);
+            }
+            .switchButtonLuz {
+                display: inline-block;
+            }
+            .switchButtonLuz .switchButtonLuz__checkbox {
+                display: none;
+            }
+            .switchButtonLuz .switchButtonLuz__label {
+                background-color: var(--color-red);
+                width: 2.5rem;
+                height: 1.5rem;
+                border-radius: 1rem;
+                display: inline-block;
+                position: relative;
+            }
+            .switchButtonLuz .switchButtonLuz__label:before {
+                transition: .2s;
+                display: block;
+                position: absolute;
+                width: 1.5rem;
+                height: 1.5rem;
+                background-color: var(--color-button);
+                content: '';
+                border-radius: 50%;
+                box-shadow: inset 0px 0px 0px 1px var(--color-black);
+            }
+            .switchButtonLuz .switchButtonLuz__checkbox:checked + .switchButtonLuz__label {
+                background-color: var(--color-green);
+            }
+            .switchButtonLuz .switchButtonLuz__checkbox:checked + .switchButtonLuz__label:before {
+                transform: translateX(1rem);
+            }
+			
+			* {
+			margin: 0;
+			}
+			html, body {
+			  height: 100%;
+			}
+			.wrapper {
+			  min-height: calc(100% - 4rem);
+			}
+			.footer {
+			  height: 4rem;
+			  background-color: #e2e2e2
+			}
